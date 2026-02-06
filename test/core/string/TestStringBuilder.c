@@ -39,6 +39,23 @@ void test__StringBuilder_appendStringLiteral__twoLiterals(void) {
     String_destroy(actual);
 }
 
+void test__StringBuilder_appendString__emptyString(void) {
+    StringBuilder sb = StringBuilder_create();
+
+    String s = String_create("");
+    StringBuilder_appendString(sb, s);
+
+    String expected = String_create("");
+    String actual = StringBuilder_toString(sb);
+
+    TEST_ASSERT_TRUE(String_equals(expected, actual));
+
+    StringBuilder_destroy(sb);
+    String_destroy(s);
+    String_destroy(expected);
+    String_destroy(actual);
+}
+
 void test__StringBuilder_appendString__oneString(void) {
     StringBuilder sb = StringBuilder_create();
 
