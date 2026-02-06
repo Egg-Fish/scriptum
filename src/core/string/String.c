@@ -59,9 +59,8 @@ char String_getCharAtIndex(String s, size_t index) {
     return string[index];
 }
 
-String String_toLowerCase(String s) {
-    String t = String_copy(s);
-    char *c = (char *)String_getString(t);
+void String_toLowerCase(String s) {
+    char *c = (char *)String_getString(s);
 
     while (*c != '\0') {
         if (*c >= 'A' && *c <= 'Z') {
@@ -70,12 +69,11 @@ String String_toLowerCase(String s) {
         c++;
     }
 
-    return t;
+    return;
 }
 
-String String_toUpperCase(String s) {
-    String t = String_copy(s);
-    char *c = (char *)String_getString(t);
+void String_toUpperCase(String s) {
+    char *c = (char *)String_getString(s);
 
     while (*c != '\0') {
         if (*c >= 'a' && *c <= 'z') {
@@ -84,7 +82,7 @@ String String_toUpperCase(String s) {
         c++;
     }
 
-    return t;
+    return;
 }
 
 bool String_equals(String s1, String s2) {
