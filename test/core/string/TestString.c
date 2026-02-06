@@ -25,215 +25,283 @@ void test__String_getString__nonemptyString(void) {
 }
 
 void test__String_equals__emptyStrings(void) {
-    String s1 = String_create("");
-    String s2 = String_create("");
+    String left = String_create("");
+    String right = String_create("");
 
-    TEST_ASSERT_TRUE(String_equals(s1, s2));
-    TEST_ASSERT_TRUE(String_equals(s2, s1));
+    TEST_ASSERT_TRUE(String_equals(left, right));
+    TEST_ASSERT_TRUE(String_equals(right, left));
 
-    String_destroy(s1);
-    String_destroy(s2);
+    String_destroy(left);
+    String_destroy(right);
 }
 
-void test__String_equals__leftEmptyString(void) {
-    String s1 = String_create("");
-    String s2 = String_create("Hello world!");
+void test__String_equals__leftIsEmptyString(void) {
+    String left = String_create("");
+    String right = String_create("Hello world!");
 
-    TEST_ASSERT_FALSE(String_equals(s1, s2));
-    TEST_ASSERT_FALSE(String_equals(s2, s1));
+    TEST_ASSERT_FALSE(String_equals(left, right));
+    TEST_ASSERT_FALSE(String_equals(right, left));
 
-    String_destroy(s1);
-    String_destroy(s2);
+    String_destroy(left);
+    String_destroy(right);
 }
 
-void test__String_equals__rightEmptyString(void) {
-    String s1 = String_create("Hello world!");
-    String s2 = String_create("");
+void test__String_equals__rightIsEmptyString(void) {
+    String left = String_create("Hello world!");
+    String right = String_create("");
 
-    TEST_ASSERT_FALSE(String_equals(s1, s2));
-    TEST_ASSERT_FALSE(String_equals(s2, s1));
+    TEST_ASSERT_FALSE(String_equals(left, right));
+    TEST_ASSERT_FALSE(String_equals(right, left));
 
-    String_destroy(s1);
-    String_destroy(s2);
+    String_destroy(left);
+    String_destroy(right);
 }
 
-void test__String_equals__equalStrings(void) {
-    String s1 = String_create("Hello world!");
-    String s2 = String_create("Hello world!");
+void test__String_equals__leftEqualsRight(void) {
+    String left = String_create("Hello world!");
+    String right = String_create("Hello world!");
 
-    TEST_ASSERT_TRUE(String_equals(s1, s2));
-    TEST_ASSERT_TRUE(String_equals(s2, s1));
+    TEST_ASSERT_TRUE(String_equals(left, right));
+    TEST_ASSERT_TRUE(String_equals(right, left));
 
-    String_destroy(s1);
-    String_destroy(s2);
+    String_destroy(left);
+    String_destroy(right);
 }
 
-void test__String_equals__unequalStrings(void) {
-    String s1 = String_create("Hello");
-    String s2 = String_create("world!");
+void test__String_equals__unleftEqualsRight(void) {
+    String left = String_create("Hello");
+    String right = String_create("world!");
 
-    TEST_ASSERT_FALSE(String_equals(s1, s2));
-    TEST_ASSERT_FALSE(String_equals(s2, s1));
+    TEST_ASSERT_FALSE(String_equals(left, right));
+    TEST_ASSERT_FALSE(String_equals(right, left));
 
-    String_destroy(s1);
-    String_destroy(s2);
+    String_destroy(left);
+    String_destroy(right);
 }
 
 void test__String_equals__leadingWhitespace(void) {
-    String s1 = String_create("Hello world!");
-    String s2 = String_create(" Hello world!");
+    String left = String_create("Hello world!");
+    String right = String_create(" Hello world!");
 
-    TEST_ASSERT_FALSE(String_equals(s1, s2));
-    TEST_ASSERT_FALSE(String_equals(s2, s1));
+    TEST_ASSERT_FALSE(String_equals(left, right));
+    TEST_ASSERT_FALSE(String_equals(right, left));
 
-    String_destroy(s1);
-    String_destroy(s2);
+    String_destroy(left);
+    String_destroy(right);
 }
 
 void test__String_startsWith__emptyStrings(void) {
-    String s1 = String_create("");
-    String s2 = String_create("");
+    String left = String_create("");
+    String right = String_create("");
 
-    TEST_ASSERT_TRUE(String_startsWith(s1, s2));
-    TEST_ASSERT_TRUE(String_startsWith(s2, s1));
+    TEST_ASSERT_TRUE(String_startsWith(left, right));
+    TEST_ASSERT_TRUE(String_startsWith(right, left));
 
-    String_destroy(s1);
-    String_destroy(s2);
+    String_destroy(left);
+    String_destroy(right);
 }
 
-void test__String_startsWith__leftEmptyString(void) {
-    String s1 = String_create("");
-    String s2 = String_create("Hello world!");
+void test__String_startsWith__leftIsEmptyString(void) {
+    String left = String_create("");
+    String right = String_create("Hello world!");
 
-    TEST_ASSERT_FALSE(String_startsWith(s1, s2));
-    TEST_ASSERT_TRUE(String_startsWith(s2, s1));
+    TEST_ASSERT_FALSE(String_startsWith(left, right));
+    TEST_ASSERT_TRUE(String_startsWith(right, left));
 
-    String_destroy(s1);
-    String_destroy(s2);
+    String_destroy(left);
+    String_destroy(right);
 }
 
-void test__String_startsWith__rightEmptyString(void) {
-    String s1 = String_create("Hello world!");
-    String s2 = String_create("");
+void test__String_startsWith__rightIsEmptyString(void) {
+    String left = String_create("Hello world!");
+    String right = String_create("");
 
-    TEST_ASSERT_TRUE(String_startsWith(s1, s2));
-    TEST_ASSERT_FALSE(String_startsWith(s2, s1));
+    TEST_ASSERT_TRUE(String_startsWith(left, right));
+    TEST_ASSERT_FALSE(String_startsWith(right, left));
 
-    String_destroy(s1);
-    String_destroy(s2);
+    String_destroy(left);
+    String_destroy(right);
 }
 
-void test__String_startsWith__equalStrings(void) {
-    String s1 = String_create("Hello world!");
-    String s2 = String_create("Hello world!");
+void test__String_startsWith__leftEqualsRight(void) {
+    String left = String_create("Hello world!");
+    String right = String_create("Hello world!");
 
-    TEST_ASSERT_TRUE(String_startsWith(s1, s2));
-    TEST_ASSERT_TRUE(String_startsWith(s2, s1));
+    TEST_ASSERT_TRUE(String_startsWith(left, right));
+    TEST_ASSERT_TRUE(String_startsWith(right, left));
 
-    String_destroy(s1);
-    String_destroy(s2);
+    String_destroy(left);
+    String_destroy(right);
 }
 
-void test__String_startsWith__rightPrefix(void) {
-    String s1 = String_create("Hello world!");
-    String s2 = String_create("Hello");
+void test__String_startsWith__leftStartsWithRight(void) {
+    String left = String_create("Hello world!");
+    String right = String_create("Hello");
 
-    TEST_ASSERT_TRUE(String_startsWith(s1, s2));
-    TEST_ASSERT_FALSE(String_startsWith(s2, s1));
+    TEST_ASSERT_TRUE(String_startsWith(left, right));
+    TEST_ASSERT_FALSE(String_startsWith(right, left));
 
-    String_destroy(s1);
-    String_destroy(s2);
+    String_destroy(left);
+    String_destroy(right);
 }
 
 void test__String_endsWith__emptyStrings(void) {
-    String s1 = String_create("");
-    String s2 = String_create("");
+    String left = String_create("");
+    String right = String_create("");
 
-    TEST_ASSERT_TRUE(String_endsWith(s1, s2));
+    TEST_ASSERT_TRUE(String_endsWith(left, right));
 
-    String_destroy(s1);
-    String_destroy(s2);
+    String_destroy(left);
+    String_destroy(right);
 }
 
-void test__String_endsWith__leftEmptyString(void) {
-    String s1 = String_create("");
-    String s2 = String_create("Hello world!");
+void test__String_endsWith__leftIsEmptyString(void) {
+    String left = String_create("");
+    String right = String_create("Hello world!");
 
-    TEST_ASSERT_FALSE(String_endsWith(s1, s2));
+    TEST_ASSERT_FALSE(String_endsWith(left, right));
 
-    String_destroy(s1);
-    String_destroy(s2);
+    String_destroy(left);
+    String_destroy(right);
 }
 
-void test__String_endsWith__rightEmptyString(void) {
-    String s1 = String_create("Hello world!");
-    String s2 = String_create("");
+void test__String_endsWith__rightIsEmptyString(void) {
+    String left = String_create("Hello world!");
+    String right = String_create("");
 
-    TEST_ASSERT_TRUE(String_endsWith(s1, s2));
+    TEST_ASSERT_TRUE(String_endsWith(left, right));
 
-    String_destroy(s1);
-    String_destroy(s2);
+    String_destroy(left);
+    String_destroy(right);
 }
 
-void test__String_endsWith__equalStrings(void) {
-    String s1 = String_create("Hello world!");
-    String s2 = String_create("Hello world!");
+void test__String_endsWith__leftEqualsRight(void) {
+    String left = String_create("Hello world!");
+    String right = String_create("Hello world!");
 
-    TEST_ASSERT_TRUE(String_endsWith(s1, s2));
-    TEST_ASSERT_TRUE(String_endsWith(s2, s1));
+    TEST_ASSERT_TRUE(String_endsWith(left, right));
+    TEST_ASSERT_TRUE(String_endsWith(right, left));
 
-    String_destroy(s1);
-    String_destroy(s2);
+    String_destroy(left);
+    String_destroy(right);
+}
+
+void test__String_endsWith__leftEndsWithRight(void) {
+    String left = String_create("Hello world!");
+    String right = String_create("world!");
+
+    TEST_ASSERT_TRUE(String_endsWith(left, right));
+
+    String_destroy(left);
+    String_destroy(right);
+}
+
+void test__String_contains__emptyStrings(void) {
+    String left = String_create("");
+    String right = String_create("");
+
+    TEST_ASSERT_TRUE(String_contains(left, right));
+
+    String_destroy(left);
+    String_destroy(right);
+}
+
+void test__String_contains__leftIsEmptyString(void) {
+    String left = String_create("");
+    String right = String_create("Hello world!");
+
+    TEST_ASSERT_FALSE(String_contains(left, right));
+
+    String_destroy(left);
+    String_destroy(right);
+}
+
+void test__String_contains__rightIsEmptyString(void) {
+    String left = String_create("Hello world!");
+    String right = String_create("");
+
+    TEST_ASSERT_TRUE(String_contains(left, right));
+
+    String_destroy(left);
+    String_destroy(right);
+}
+
+void test__String_contains__leftEqualsRight(void) {
+    String left = String_create("Hello world!");
+    String right = String_create("Hello world!");
+
+    TEST_ASSERT_TRUE(String_contains(left, right));
+    TEST_ASSERT_TRUE(String_contains(right, left));
+
+    String_destroy(left);
+    String_destroy(right);
+}
+
+void test__String_contains__leftContainsRight(void) {
+    String left = String_create("Hello world!");
+    String right = String_create("world");
+
+    TEST_ASSERT_TRUE(String_contains(left, right));
+
+    String_destroy(left);
+    String_destroy(right);
 }
 
 void test__String_concatenate__emptyStrings(void) {
-    String s1 = String_create("");
-    String s2 = String_create("");
+    String left = String_create("");
+    String right = String_create("");
 
-    String s3 = String_concatenate(s1, s2);
-    TEST_ASSERT_TRUE(String_equals(s3, s1));
+    String actual = String_concatenate(left, right);
 
-    String_destroy(s1);
-    String_destroy(s2);
-    String_destroy(s3);
+    TEST_ASSERT_TRUE(String_equals(left, actual));
+    TEST_ASSERT_TRUE(String_equals(right, actual));
+
+    String_destroy(left);
+    String_destroy(right);
+    String_destroy(actual);
 }
 
-void test__String_concatenate__leftEmptyString(void) {
-    String s1 = String_create("");
-    String s2 = String_create("Hello world!");
+void test__String_concatenate__leftIsEmptyString(void) {
+    String left = String_create("");
+    String right = String_create("Hello world!");
 
-    String s3 = String_concatenate(s1, s2);
-    TEST_ASSERT_TRUE(String_equals(s3, s2));
+    String expected = right;
+    String actual = String_concatenate(left, right);
 
-    String_destroy(s1);
-    String_destroy(s2);
-    String_destroy(s3);
+    TEST_ASSERT_TRUE(String_equals(expected, actual));
+
+    String_destroy(left);
+    String_destroy(right);
+    String_destroy(actual);
 }
 
-void test__String_concatenate__rightEmptyString(void) {
-    String s1 = String_create("Hello world!");
-    String s2 = String_create("");
+void test__String_concatenate__rightIsEmptyString(void) {
+    String left = String_create("Hello world!");
+    String right = String_create("");
 
-    String s3 = String_concatenate(s1, s2);
-    TEST_ASSERT_TRUE(String_equals(s3, s1));
+    String expected = left;
+    String actual = String_concatenate(left, right);
 
-    String_destroy(s1);
-    String_destroy(s2);
-    String_destroy(s3);
+    TEST_ASSERT_TRUE(String_equals(expected, actual));
+
+    String_destroy(left);
+    String_destroy(right);
+    String_destroy(actual);
 }
 
 void test__String_concatenate__nonemptyStrings(void) {
-    String s1 = String_create("Hello ");
-    String s2 = String_create("world!");
+    String left = String_create("Hello ");
+    String right = String_create("world!");
 
-    String s3 = String_concatenate(s1, s2);
     String expected = String_create("Hello world!");
-    TEST_ASSERT_TRUE(String_equals(s3, expected));
+    String actual = String_concatenate(left, right);
 
-    String_destroy(s1);
-    String_destroy(s2);
-    String_destroy(s3);
+    TEST_ASSERT_TRUE(String_equals(expected, actual));
+
+    String_destroy(left);
+    String_destroy(right);
     String_destroy(expected);
+    String_destroy(actual);
 }
 
 int main(void) {
@@ -243,26 +311,33 @@ int main(void) {
     RUN_TEST(test__String_getString__nonemptyString);
 
     RUN_TEST(test__String_equals__emptyStrings);
-    RUN_TEST(test__String_equals__leftEmptyString);
-    RUN_TEST(test__String_equals__rightEmptyString);
-    RUN_TEST(test__String_equals__equalStrings);
-    RUN_TEST(test__String_equals__unequalStrings);
+    RUN_TEST(test__String_equals__leftIsEmptyString);
+    RUN_TEST(test__String_equals__rightIsEmptyString);
+    RUN_TEST(test__String_equals__leftEqualsRight);
+    RUN_TEST(test__String_equals__unleftEqualsRight);
     RUN_TEST(test__String_equals__leadingWhitespace);
 
     RUN_TEST(test__String_startsWith__emptyStrings);
-    RUN_TEST(test__String_startsWith__leftEmptyString);
-    RUN_TEST(test__String_startsWith__rightEmptyString);
-    RUN_TEST(test__String_startsWith__equalStrings);
-    RUN_TEST(test__String_startsWith__rightPrefix);
+    RUN_TEST(test__String_startsWith__leftIsEmptyString);
+    RUN_TEST(test__String_startsWith__rightIsEmptyString);
+    RUN_TEST(test__String_startsWith__leftEqualsRight);
+    RUN_TEST(test__String_startsWith__leftStartsWithRight);
 
     RUN_TEST(test__String_endsWith__emptyStrings);
-    RUN_TEST(test__String_endsWith__leftEmptyString);
-    RUN_TEST(test__String_endsWith__rightEmptyString);
-    RUN_TEST(test__String_endsWith__equalStrings);
+    RUN_TEST(test__String_endsWith__leftIsEmptyString);
+    RUN_TEST(test__String_endsWith__rightIsEmptyString);
+    RUN_TEST(test__String_endsWith__leftEqualsRight);
+    RUN_TEST(test__String_endsWith__leftEndsWithRight);
+
+    RUN_TEST(test__String_contains__emptyStrings);
+    RUN_TEST(test__String_contains__leftIsEmptyString);
+    RUN_TEST(test__String_contains__rightIsEmptyString);
+    RUN_TEST(test__String_contains__leftEqualsRight);
+    RUN_TEST(test__String_contains__leftContainsRight);
 
     RUN_TEST(test__String_concatenate__emptyStrings);
-    RUN_TEST(test__String_concatenate__leftEmptyString);
-    RUN_TEST(test__String_concatenate__rightEmptyString);
+    RUN_TEST(test__String_concatenate__leftIsEmptyString);
+    RUN_TEST(test__String_concatenate__rightIsEmptyString);
     RUN_TEST(test__String_concatenate__nonemptyStrings);
 
     return UNITY_END();

@@ -139,6 +139,10 @@ bool String_endsWith(String s1, String s2) {
     }
 }
 
+bool String_contains(String s1, String s2) {
+    return false;
+}
+
 String String_concatenate(String s1, String s2) {
     size_t s1Length = String_getLength(s1);
     size_t s2Length = String_getLength(s2);
