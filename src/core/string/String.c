@@ -140,7 +140,21 @@ bool String_endsWith(String s1, String s2) {
 }
 
 bool String_contains(String s1, String s2) {
-    return false;
+    size_t s1Length = String_getLength(s1);
+    size_t s2Length = String_getLength(s2);
+
+    if (s1Length < s2Length) {
+        return false;
+    }
+
+    const char *s1String = String_getString(s1);
+    const char *s2String = String_getString(s2);
+
+    if (strstr(s1String, s2String) != NULL) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 String String_concatenate(String s1, String s2) {
