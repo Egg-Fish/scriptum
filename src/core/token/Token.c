@@ -49,7 +49,7 @@ Token Token_copy(Token t) {
 
 TokenType Token_getType(Token t) { return t->type; }
 
-String Token_getLexeme(Token t) { return String_copy(t->lexeme); }
+String Token_getLexeme(Token t) { return t->lexeme; }
 
 String Token_toString(Token t) {
     TokenType type = Token_getType(t);
@@ -68,7 +68,6 @@ String Token_toString(Token t) {
 
     StringBuilder_destroy(sb);
     String_destroy(typeString);
-    String_destroy(lexeme);
 
     return s;
 }

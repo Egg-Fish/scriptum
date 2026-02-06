@@ -20,7 +20,6 @@ void test__Token_getLexeme__normal(void) {
     String_destroy(lexeme);
     Token_destroy(t);
     String_destroy(expected);
-    String_destroy(actual);
 }
 
 void test__Token_toString__integerToken(void) {
@@ -37,7 +36,6 @@ void test__Token_toString__integerToken(void) {
     String_destroy(lexeme);
     Token_destroy(t);
     String_destroy(expected);
-    String_destroy(actual);
 }
 
 int main(void) {
