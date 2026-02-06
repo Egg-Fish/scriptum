@@ -1,5 +1,7 @@
 #include "core/token/Token.h"
 
+#include "core/string/String.h"
+
 #include "unity.h"
 
 void setUp(void) {}
