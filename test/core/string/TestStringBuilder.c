@@ -100,6 +100,7 @@ int main(void) {
     RUN_TEST(test__StringBuilder_appendStringLiteral__oneLiteral);
     RUN_TEST(test__StringBuilder_appendStringLiteral__twoLiterals);
 
+    RUN_TEST(test__StringBuilder_appendString__emptyString);
     RUN_TEST(test__StringBuilder_appendString__oneString);
     RUN_TEST(test__StringBuilder_appendString__twoStrings);
 
