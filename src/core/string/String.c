@@ -108,8 +108,8 @@ void String_trimWhitespaceFromStart(String s) {
     char *newString = calloc(length + 1, sizeof(char));
 
     char *c = string;
-    
-    while (Char_isWhitespace(*c)) {
+
+    while (Char_isWhitespace(*c) && length > 0) {
         c++;
         length--;
     }
@@ -129,7 +129,7 @@ void String_trimWhitespaceFromEnd(String s) {
 
     char *c = string + length - 1;
 
-    while (Char_isWhitespace(*c)) {
+    while (Char_isWhitespace(*c) && length > 0) {
         length--;
         c--;
     }
