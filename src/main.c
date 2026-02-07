@@ -1,13 +1,19 @@
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
 
+#include "core/list/List.h"
 #include "core/string/String.h"
 #include "core/token/Token.h"
 
 int main(void) {
-    Token t = Token_create(TOKEN_TYPE_INTEGER, String_create("67"));
+    String string = String_create("   Hello \n world! ");
+    List lexemes = String_splitByWhitespace(string);
 
-    Token_println(t);
-
+    for (size_t i = 0; i < List_getLength(lexemes); i++) {
+        printf("lexeme %zu = ", i + 1);
+        String lexeme = (String)List_getItemAtIndex(lexemes, i);
+        String_println(lexeme);
+    }
+    
     return 0;
 }
