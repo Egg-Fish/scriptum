@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "core/list/List.h"
+
 struct String {
     char *string;
     size_t length;
@@ -145,6 +147,25 @@ void String_trimWhitespace(String s) {
     String_trimWhitespaceFromStart(s);
 
     return;
+}
+
+List String_splitByWhitespace(String s) {
+    List l = List_create();
+    const char *c = String_getString(s);
+    size_t length = String_getLength(s);
+
+    char *string = calloc(length + 1, sizeof(char));
+    strncpy(string, c, length);
+
+    char *token = strtok(string, " \r\n\t");
+
+    while (token != NULL) {
+        List_appendItem(l, String_create(token));
+
+        token = strtok(NULL, " \r\n\t");
+    }
+
+    return l;
 }
 
 bool String_equals(String s1, String s2) {

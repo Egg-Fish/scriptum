@@ -3,6 +3,8 @@
 #include <stdbool.h>
 #include <stddef.h>
 
+#include "core/list/List.h"
+
 typedef struct String *String;
 
 String String_create(const char *string);
@@ -19,6 +21,8 @@ void String_toUpperCase(String s);
 void String_trimWhitespaceFromStart(String s);
 void String_trimWhitespaceFromEnd(String s);
 void String_trimWhitespace(String s);
+
+List String_splitByWhitespace(String s);
 
 bool String_equals(String s1, String s2);
 bool String_startsWith(String s1, String s2);

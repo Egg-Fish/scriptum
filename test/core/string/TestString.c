@@ -60,6 +60,25 @@ void test__String_trimWhitespace__emptyString(void) {
     String_destroy(actual);
 }
 
+void test__String_splitByWhitespace__normal(void) {
+    char expected[5][10] = {"a", "b", "c", "d", "e"};
+
+    String s = String_create("  a b  c  d \t e  ");
+    List l = String_splitByWhitespace(s);
+
+    size_t length = List_getLength(l);
+    TEST_ASSERT_EQUAL_INT(5, length);
+
+    for (size_t i = 0; i < length; i++) {
+        String x = (String)List_getItemAtIndex(l, i);
+        TEST_ASSERT_EQUAL_STRING(expected[i], String_getString(x));
+        String_destroy(x);
+    }
+
+    String_destroy(s);
+    List_destroy(l);
+}
+
 void test__String_equals__emptyStrings(void) {
     String left = String_create("");
     String right = String_create("");
@@ -350,6 +369,8 @@ int main(void) {
     RUN_TEST(test__String_trimWhitespaceFromStart__leadingSpaces);
 
     RUN_TEST(test__String_trimWhitespace__emptyString);
+
+    RUN_TEST(test__String_splitByWhitespace__normal);
 
     RUN_TEST(test__String_equals__emptyStrings);
     RUN_TEST(test__String_equals__leftIsEmptyString);
