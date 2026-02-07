@@ -59,11 +59,25 @@ char String_getCharAtIndex(String s, size_t index) {
     return string[index];
 }
 
+bool Char_isLowerCase(char c) { return c >= 'a' && c <= 'z'; }
+bool Char_isUpperCase(char c) { return c >= 'a' && c <= 'z'; }
+bool Char_isWhitespace(char c) {
+    switch (c) {
+    case ' ':
+    case '\n':
+    case '\t':
+    case '\r':
+        return true;
+    default:
+        return false;
+    }
+}
+
 void String_toLowerCase(String s) {
     char *c = (char *)String_getString(s);
 
     while (*c != '\0') {
-        if (*c >= 'A' && *c <= 'Z') {
+        if (Char_isUpperCase(*c)) {
             *c += 32;
         }
         c++;
@@ -76,11 +90,59 @@ void String_toUpperCase(String s) {
     char *c = (char *)String_getString(s);
 
     while (*c != '\0') {
-        if (*c >= 'a' && *c <= 'z') {
+        if (Char_isLowerCase(*c)) {
             *c -= 32;
         }
         c++;
     }
+
+    return;
+}
+
+void String_trimWhitespaceFromStart(String s) {
+    char *string = (char *)String_getString(s);
+    size_t length = String_getLength(s);
+
+    // s->string must be assigned new malloced pointer
+    // for future freeing.
+    char *newString = calloc(length + 1, sizeof(char));
+
+    char *c = string;
+    
+    while (Char_isWhitespace(*c)) {
+        c++;
+        length--;
+    }
+
+    strncpy(newString, c, length);
+    free(string);
+
+    s->string = newString;
+    s->length = length;
+
+    return;
+}
+
+void String_trimWhitespaceFromEnd(String s) {
+    char *string = (char *)String_getString(s);
+    size_t length = String_getLength(s);
+
+    char *c = string + length - 1;
+
+    while (Char_isWhitespace(*c)) {
+        length--;
+        c--;
+    }
+
+    s->string[length] = '\0';
+    s->length = length;
+
+    return;
+}
+
+void String_trimWhitespace(String s) {
+    String_trimWhitespaceFromEnd(s);
+    String_trimWhitespaceFromStart(s);
 
     return;
 }

@@ -24,6 +24,42 @@ void test__String_getString__nonemptyString(void) {
     String_destroy(s);
 }
 
+void test__String_trimWhitespaceFromStart__emptyString(void) {
+    String expected = String_create("");
+    String actual = String_create("");
+
+    String_trimWhitespaceFromStart(actual);
+
+    TEST_ASSERT_TRUE(String_equals(expected, actual));
+
+    String_destroy(expected);
+    String_destroy(actual);
+}
+
+void test__String_trimWhitespaceFromStart__leadingSpaces(void) {
+    String expected = String_create("67");
+    String actual = String_create("         67");
+
+    String_trimWhitespaceFromStart(actual);
+
+    TEST_ASSERT_TRUE(String_equals(expected, actual));
+
+    String_destroy(expected);
+    String_destroy(actual);
+}
+
+void test__String_trimWhitespace__emptyString(void) {
+    String expected = String_create("");
+    String actual = String_create("");
+
+    String_trimWhitespace(actual);
+
+    TEST_ASSERT_TRUE(String_equals(expected, actual));
+
+    String_destroy(expected);
+    String_destroy(actual);
+}
+
 void test__String_equals__emptyStrings(void) {
     String left = String_create("");
     String right = String_create("");
@@ -309,6 +345,11 @@ int main(void) {
 
     RUN_TEST(test__String_getString__emptyString);
     RUN_TEST(test__String_getString__nonemptyString);
+
+    RUN_TEST(test__String_trimWhitespaceFromStart__emptyString);
+    RUN_TEST(test__String_trimWhitespaceFromStart__leadingSpaces);
+
+    RUN_TEST(test__String_trimWhitespace__emptyString);
 
     RUN_TEST(test__String_equals__emptyStrings);
     RUN_TEST(test__String_equals__leftIsEmptyString);
