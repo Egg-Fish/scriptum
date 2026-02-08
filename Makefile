@@ -6,7 +6,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 BIN_DIR = bin
 TEST_DIR = test
-UNITY_DIR = unity
+UNITY_DIR = external/unity
 
 TARGET = scriptum
 
@@ -48,7 +48,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 # Rule for test objects
 $(OBJ_DIR)/test/%.o: $(TEST_DIR)/%.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(UNITY_DIR) -c $< -o $@
 
 # Rule for Unity
 $(OBJ_DIR)/unity.o: $(UNITY_DIR)/unity.c
